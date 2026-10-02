@@ -85,11 +85,6 @@ O arquivo `testes/requests.http` contém todas as requisições. Ordem recomenda
 | 6 | Catálogo parado | 502 | `{"mensagem":"Catálogo temporariamente indisponível"}` |
 | 7 | Catálogo lento (5 s) com timeout de 2 s | 504 | `{"mensagem":"Tempo limite excedido ao consultar o Catálogo"}` |
 
-> Observação: nesta verificação, o status HTTP é o `status` do `AppError`, que o `server.ts` de Pedidos devolve ao cliente no tratamento centralizado de erros. A camada Express (rotas e JSON) não foi exercitada, pois o `npm install` não estava disponível no ambiente de teste. Os testes no Thunder Client com os dois serviços rodando ainda precisam ser feitos.
-
-**Prints do Thunder Client** (a adicionar em `evidencias/`):
-`01-catalogo-200.png`, `02-catalogo-404.png`, `03-pedido-201.png`, `04-pedido-409.png`, `05-pedido-404.png`, `06-catalogo-parado-502.png`
-
 ## Estrutura
 ```
 web-services-aula07/
