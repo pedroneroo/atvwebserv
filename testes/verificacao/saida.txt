@@ -1,0 +1,14 @@
+1. buscarProduto(1)  [GET /produtos/1]
+   -> sucesso {"id":1,"nome":"Teclado","preco":150,"estoque":4}
+2. buscarProduto(999)  [GET /produtos/999]
+   -> HTTP 404 {"mensagem":"Produto inexistente"}
+3. criarPedido(1, 2)
+   -> sucesso {"produtoId":1,"quantidade":2,"total":300,"status":"criado"}
+4. criarPedido(1, 99)
+   -> HTTP 409 {"mensagem":"Estoque insuficiente"}
+5. criarPedido(999, 1)
+   -> HTTP 404 {"mensagem":"Produto inexistente"}
+7. criarPedido(1, 1) com Catálogo lento (5s) e timeout 2s
+   -> HTTP 504 {"mensagem":"Tempo limite excedido ao consultar o Catálogo"}
+6. criarPedido(1, 1) com Catálogo parado
+   -> HTTP 502 {"mensagem":"Catálogo temporariamente indisponível"}

@@ -1,0 +1,31 @@
+### Extensão "REST Client" (VS Code). No Thunder Client, crie as mesmas requisições manualmente.
+
+### 1. Catálogo - produto válido (200)
+GET http://localhost:3001/produtos/1
+
+### 2. Catálogo - produto inexistente (404)
+GET http://localhost:3001/produtos/999
+
+### 3. Pedidos - criar pedido (201)
+POST http://localhost:3000/pedidos
+Content-Type: application/json
+
+{ "produtoId": 1, "quantidade": 2 }
+
+### 4. Pedidos - estoque insuficiente (409)
+POST http://localhost:3000/pedidos
+Content-Type: application/json
+
+{ "produtoId": 1, "quantidade": 99 }
+
+### 5. Pedidos - produto inexistente (404)
+POST http://localhost:3000/pedidos
+Content-Type: application/json
+
+{ "produtoId": 999, "quantidade": 1 }
+
+### 6. Pedidos - Catálogo parado (502/504) -> pare o Catálogo antes
+POST http://localhost:3000/pedidos
+Content-Type: application/json
+
+{ "produtoId": 1, "quantidade": 1 }
